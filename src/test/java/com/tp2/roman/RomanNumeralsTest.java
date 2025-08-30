@@ -5,11 +5,33 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RomanNumeralsTest {
 
-    // TODO: Replace these lines with your tests
+    RomanNumerals romanNumerals = new RomanNumerals();
+
     @Test
-    void exampleTest(){
-        assertEquals(4, 2 + 1);
+    void convert(){
+        assertEquals("I", romanNumerals.convert(1));
+        assertEquals("I", romanNumerals.convert(5));
+        assertEquals("I", romanNumerals.convert(10));
+        assertEquals("I", romanNumerals.convert(50));
+        assertEquals("I", romanNumerals.convert(100));
+        assertEquals("I", romanNumerals.convert(500));
+        assertEquals("I", romanNumerals.convert(1000));
     }
+
+    @Test
+    void operation(){
+        assertEquals(1,romanNumerals.operation("I"));
+        assertEquals(4,romanNumerals.operation("IV"));
+        assertEquals(9,romanNumerals.operation("IX"));
+        assertEquals(40,romanNumerals.operation("XL"));
+        assertEquals(90,romanNumerals.operation("XC"));
+        assertEquals(400,romanNumerals.operation("CD"));
+        assertEquals(900,romanNumerals.operation("CM"));
+    }
+
+
+
+
 
 //    Missing tests:
 //

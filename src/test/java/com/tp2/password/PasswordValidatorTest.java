@@ -7,12 +7,49 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class PasswordValidatorTest {
 
-    // TODO: Replace these lines with your tests
+    PasswordValidator passwordValidator = new PasswordValidator();
+
     @Test
-    void exampleTest(){
-        assertEquals(4, 2 + 1);
+    void minCharacter(){
+        assertEquals(true,passwordValidator.minCharacter("Juancito2.0"));
+        assertEquals(true,passwordValidator.minCharacter("helloworld"));
+        assertEquals(false,passwordValidator.minCharacter("Pepe123"));
     }
 
+    @Test
+    void uppercase(){
+        assertEquals(true,passwordValidator.uppercase("Juancito2.0"));
+        assertEquals(false,passwordValidator.uppercase("helloworld"));
+        assertEquals(true,passwordValidator.uppercase("Pepe123"));
+    }
+
+    @Test
+    void lowercase(){
+        assertEquals(true,passwordValidator.lowercase("Juancito2.0"));
+        assertEquals(true,passwordValidator.lowercase("helloworld"));
+        assertEquals(true,passwordValidator.lowercase("Pepe123"));
+    }
+
+    @Test
+    void containNumber(){
+        assertEquals(true,passwordValidator.containNumber("Juancito2.0"));
+        assertEquals(false,passwordValidator.containNumber("helloworld"));
+        assertEquals(true,passwordValidator.containNumber("Pepe123"));
+    }
+
+    @Test
+    void specialDigits(){
+        assertEquals(true,passwordValidator.specialDigits("Juancito2.0"));
+        assertEquals(false,passwordValidator.specialDigits("helloworld"));
+        assertEquals(false,passwordValidator.specialDigits("Pepe123"));
+    }
+
+    @Test
+    void isValid(){
+        assertEquals(true,passwordValidator.isValid("Juancito2.0"));
+        assertEquals(false,passwordValidator.isValid("helloworld"));
+        assertEquals(false,passwordValidator.isValid("Pepe123"));
+    }
 //    Missing tests:
 //
 //- Password with less than 8 characters should be invalid

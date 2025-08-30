@@ -6,11 +6,46 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class StringCalculatorTest {
 
-    // TODO: Replace these lines with your tests
+    StringCalculator calculator = new StringCalculator();
+
     @Test
-    void exampleTest(){
-        assertEquals(4, 2 + 1);
+    void numberNull(){
+        assertEquals(0, calculator.numberNull(""));
     }
+
+    @Test
+    void singleNumber(){
+        assertEquals(1, calculator.singleNumber("1"));
+        assertEquals(2, calculator.singleNumber("2"));
+        assertEquals(3, calculator.singleNumber("3"));
+    }
+
+    @Test
+    void sumTwoNumbers(){
+        assertEquals(2,calculator.sumTwoNumbers("1,1"));
+        assertEquals(3,calculator.sumTwoNumbers("1,2"));
+        assertEquals(4,calculator.sumTwoNumbers("1,3"));
+
+    }
+
+    @Test
+    void sumMultiplesNumbers(){
+        assertEquals(10,calculator.sumMultiplesNumbers("5,4,1"));
+        assertEquals(6,calculator.sumMultiplesNumbers("1,2,3"));
+        assertEquals(9,calculator.sumMultiplesNumbers("3,3,3"));
+    }
+
+    @Test
+    void failSummation(){
+        assertEquals(false,calculator.failSummation("5,-4,1"));
+        assertEquals(false,calculator.failSummation("-1,2,3"));
+        assertEquals(false,calculator.failSummation("3,3,-3"));
+    }
+
+
+
+
+
 
 //    Missing tests:
 //

@@ -1,46 +1,43 @@
 package com.tp2.leapyear;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class LeapYearTest {
     LeapYear leapYear = new LeapYear();
 
     @Test
-    public void isNotDivisibleWithOneHundred() {
-        assertEquals(false, leapYear.isNotDivisibleWithOneHundred(2000));
-        assertEquals(false, leapYear.isNotDivisibleWithOneHundred(1900));
-        assertEquals(true, leapYear.isNotDivisibleWithOneHundred(2004));
-        assertEquals(true, leapYear.isNotDivisibleWithOneHundred(2001));
+    void isNotDivisibleWithOneHundred() {
+        assertFalse(leapYear.isNotDivisibleWithOneHundred(2000));
+        assertFalse(leapYear.isNotDivisibleWithOneHundred(1900));
+        assertTrue(leapYear.isNotDivisibleWithOneHundred(2004));
+        assertTrue(leapYear.isNotDivisibleWithOneHundred(2001));
     }
 
     @Test
-    public void isDivisibleWithFourHundred() {
-        assertEquals(true, leapYear.isDivisibleWithFourHundred(2000));
-        assertEquals(false, leapYear.isDivisibleWithFourHundred(1900));
-        assertEquals(false, leapYear.isDivisibleWithFourHundred(2004));
-        assertEquals(false, leapYear.isDivisibleWithFourHundred(2001));
+    void isDivisibleWithFourHundred() {
+        assertTrue(leapYear.isDivisibleWithFourHundred(2000));
+        assertFalse(leapYear.isDivisibleWithFourHundred(1900));
+        assertFalse(leapYear.isDivisibleWithFourHundred(2004));
+        assertFalse(leapYear.isDivisibleWithFourHundred(2001));
     }
 
     @Test
-    public void isDivisibleWithFour() {
-        assertEquals(true, leapYear.isDivisibleWithFour(2000));
-        assertEquals(true, leapYear.isDivisibleWithFour(1900));
-        assertEquals(true, leapYear.isDivisibleWithFour(2004));
-        assertEquals(false, leapYear.isDivisibleWithFour(2001));
+    void isDivisibleWithFour() {
+        assertTrue(leapYear.isDivisibleWithFour(2000));
+        assertTrue(leapYear.isDivisibleWithFour(1900));
+        assertTrue(leapYear.isDivisibleWithFour(2004));
+        assertFalse(leapYear.isDivisibleWithFour(2001));
     }
 
     @Test
-    public void result() {
-        assertEquals(true, leapYear.result(2000));
-        assertEquals(false, leapYear.result(1900));
-        assertEquals(true, leapYear.result(2004));
-        assertEquals(false, leapYear.result(2001));
+    void result() {
+        assertTrue(leapYear.result(2000));
+        assertFalse(leapYear.result(1900));
+        assertTrue(leapYear.result(2004));
+        assertFalse(leapYear.result(2001));
+        assertTrue(leapYear.result(2016));
+        assertFalse(leapYear.result(2017));
     }
 }
-
-//    Missing tests:
-//
-//- A year is a leap year if it is divisible by 4
-//- A year is not a leap year if it is divisible by 100
-//- A year is a leap year if it is divisible by 400

@@ -1,42 +1,31 @@
 package com.tp2.password;
 
-import static java.lang.Character.isUpperCase;
-
 public class PasswordValidator {
 
-
     public boolean isValid(String password) {
-        return (minCharacter(password)&&
-                uppercase(password)&&
-                lowercase(password)&&
-                containNumber(password)&&
-                specialDigits(password)
-                );
+        return minCharacter(password) &&
+                uppercase(password) &&
+                lowercase(password) &&
+                containNumber(password) &&
+                specialDigits(password);
     }
 
     public boolean minCharacter(String password) {
-        if (password.length() >= 8) {
-            return true;
-        } else {
-            return false;
-        }
+        return password.length() >= 8;
     }
 
     public boolean uppercase(String password) {
-        for (int i = 0; i < password.length(); i++) {
-            char letterUppercase = password.charAt(i);
-            if (letterUppercase == Character.toUpperCase(letterUppercase)) {
+        for (char c : password.toCharArray()) {
+            if (Character.isUpperCase(c)) {
                 return true;
-
             }
         }
         return false;
     }
 
     public boolean lowercase(String password) {
-        for (int i = 0; i < password.length(); i++) {
-            char letterLowercase = password.charAt(i);
-            if (letterLowercase == Character.toLowerCase(letterLowercase)) {
+        for (char c : password.toCharArray()) {
+            if (Character.isLowerCase(c)) {
                 return true;
             }
         }
@@ -44,9 +33,8 @@ public class PasswordValidator {
     }
 
     public boolean containNumber(String password) {
-        for (int i = 0; i < password.length(); i++) {
-            char number = password.charAt(i);
-            if (Character.isDigit(number) == true) {
+        for (char c : password.toCharArray()) {
+            if (Character.isDigit(c)) {
                 return true;
             }
         }
@@ -54,24 +42,12 @@ public class PasswordValidator {
     }
 
     public boolean specialDigits(String password) {
-        char[] specialCharacters = {
-                '!', '@', '#', '$', '%', '^', '&', '*', '(', ')',
-                '_', '+', '-', '=', '[', ']', '{', '}', '|', ';',
-                ':', ',', '.', '<', '>', '?'
-        };
-
-        for (int i = 0; i < specialCharacters.length; i++) {
-            char digit = specialCharacters[i];
-            for (int j = 0; j < password.length(); j++) {
-                char valuePassword = password.charAt(j);
-                if (digit==valuePassword){
-                    return true;
-                }
-
+        String specialChars = "!@#$%^&*()_+-=[]{}|;:,.<>?";
+        for (char c : password.toCharArray()) {
+            if (specialChars.indexOf(c) != -1) {
+                return true;
             }
-        }return false;
+        }
+        return false;
     }
 }
-
-
-

@@ -1,53 +1,31 @@
 package com.tp2.stringcalculator;
 
-import javax.lang.model.element.TypeElement;
-import java.lang.reflect.Array;
-import java.lang.reflect.Type;
-
 public class StringCalculator {
 
-    public int numberNull(String numbers) {
-        if (numbers.length() == 0) {
+    public int add(String numbers) {
+        if (numbers.isEmpty()) {
             return 0;
         }
-    return -1;
-    }
 
-    public int singleNumber(String numbers){
-        if (numbers.length() == 1) {
-            return Integer.parseInt(numbers);
-        }
-        return -1;
-    }
+        String[] nums = numbers.split(",|\n");
+        int sum = 0;
+        StringBuilder negatives = new StringBuilder();
 
-    public int sumTwoNumbers(String numbers){
-        int accountant = 0;
-        String[] parts = numbers.split(",");
-
-        for (int i = 0; i < parts.length; i++) {
-            accountant += Integer.parseInt(parts[i]);
-        }
-        return accountant;
-    }
-
-    public int sumMultiplesNumbers(String numbers){
-        int accountant = 0;
-        String[] nums = numbers.split(",");
-        for (int i = 0; i < nums.length; i++) {
-            accountant += Integer.parseInt(nums[i]);
-        }
-        return accountant;
-    }
-
-    public boolean failSummation(String numbers) {
-        String[] nums = numbers.split(",");
-        for (int i = 0; i < nums.length; i++) {
-            if (Integer.parseInt(nums[i]) < 0) {
-                return false;
+        for (String num : nums) {
+            if (!num.trim().isEmpty()) {
+                int n = Integer.parseInt(num.trim());
+                if (n < 0) {
+                    if (negatives.length() > 0) negatives.append(", ");
+                    negatives.append(n);
+                }
+                sum += n;
             }
         }
-        return true;
+
+        if (negatives.length() > 0) {
+            throw new IllegalArgumentException("Negative numbers not allowed: " + negatives);
+        }
+
+        return sum;
     }
-
 }
-
